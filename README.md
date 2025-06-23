@@ -12,8 +12,12 @@ Este repositorio contiene evidencias de prácticas desarrolladas en el curso de 
 Cada carpeta incluye el código fuente desarrollado, diagramas de estado (cuando aplica), y documentación correspondiente.
 
 ## Autores
-Pablo Andrés Bermeo Garcia
-Tyrone Miguel Novillo Bravo
-Departamento de Ingeniería Eléctrica, Electrónica y Telecomunicaciones
-Universidad de Cuenca 
+
+Pablo Andrés Bermeo Garcia  
+
+Tyrone Miguel Novillo Bravo  
+
+Departamento de Ingeniería Eléctrica, Electrónica y Telecomunicaciones  
+Universidad de Cuenca  
 Ecuador
+
