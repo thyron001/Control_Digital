@@ -14,9 +14,7 @@ Cada carpeta incluye el código fuente desarrollado, diagramas de estado (cuando
 ## Autores
 
 Pablo Andrés Bermeo Garcia  
-
 Tyrone Miguel Novillo Bravo  
-
 Departamento de Ingeniería Eléctrica, Electrónica y Telecomunicaciones  
 Universidad de Cuenca  
 Ecuador
