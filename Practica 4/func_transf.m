@@ -1,0 +1,60 @@
+clc;clear;close all;
+
+datos = readmatrix('funciontransf.txt');
+
+% Asignar las columnas a variables
+tiempo_t = datos(:,1);
+excitacion_sistema_u = datos(:,2);
+respuesta_sistema_y = datos(:,3);
+
+%obtener valores de lineas guias:
+% minimo valor de la salida
+Linea_inicio = min(respuesta_sistema_y); 
+
+% maximo valor de la salida
+Linea_final = max(respuesta_sistema_y); 
+
+% obtener variacion en la entrada y en la salida
+Delta_u=max(excitacion_sistema_u) - min(excitacion_sistema_u);
+delta_y=max(respuesta_sistema_y) - min(respuesta_sistema_y);
+
+k1 = delta_y / Delta_u;
+theta1 = 0.35;
+% valor aproximado de interseccion 
+tau1 = 1.5 - theta1; 
+
+
+% simula la respuesta del sistema a una entrada 
+% de escalon unitario y escala
+theta2 = 0.35;
+
+% encontrar el tiempo en el que se alcanza el 63.21% 
+% de su valor final
+porcentaje_63 = find(respuesta_sistema_y >= 0.6321*delta_y ....
+    + Linea_inicio, 1);
+tiempo_63 = tiempo_t(porcentaje_63);
+tau2 = tiempo_63 - theta2;
+
+
+%Metodo Analitico
+k3 = k1;
+porcentaje_28 = find(respuesta_sistema_y >= 0.284*delta_y +...
+    Linea_inicio,1);
+
+%se trata a theta3 y tau3 como variables simbolicas
+syms theta3 tau3
+
+% resolver el sistema de ecuaciones simbolicas
+eq = solve(theta3  + tau3 == tiempo_t(porcentaje_63),...
+    theta3+ tau3/3 == tiempo_t(porcentaje_28));
+
+% asignar los valores calculados 
+theta3 = eval(eq.theta3);
+tau3 = eval(eq.tau3);
+disp('------Modelo Analitico ------')
+G3 = tf([k3], [tau3 1],'InputDelay', theta3)
+[y3, t3] = step(G3);
+y3 = y3*Delta_u;
+
+
+pidTuner(G3, 'PID');
