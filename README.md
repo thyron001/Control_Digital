@@ -16,9 +16,7 @@ Cada carpeta incluye el código fuente desarrollado, diagramas de estado (cuando
 
 Pablo Andrés Bermeo Garcia
 Tyrone Miguel Novillo Bravo
-
-Carlos Martín Vinces Segovia  
+Carlos Martín Vinces Segovia
 Departamento de Ingeniería Eléctrica, Electrónica y Telecomunicaciones  
 Universidad de Cuenca  
 Ecuador
-
